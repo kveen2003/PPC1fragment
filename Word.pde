@@ -3,10 +3,10 @@ class Word {
  String myWord;
  float xPosition, yPosition;
  float angle;
+ float angleB = 0.0;
  Letter [] letters;
  Letter letter;
- float[] x = new float[20];
- float[] y = new float[20];
+ 
  
  Word (String word, float xPosition, float yPosition) {
     myWord = word;
@@ -38,18 +38,20 @@ class Word {
     } 
  }
  
- void dragLetter(int i, float x, float y){
-   
- }
- 
  void dragLetters(){
-   dragLetter(0, mouseX, mouseY);
-   for(int i = 0; i< letters.length; i++) {
-       dragLetter(i+1,x[i], y[i]);
-    } 
+   for (int i = 0; i < letters.length; i++){
+    float dx = mouseX - xPosition;
+    float dy = mouseY - yPosition;
+    angleB = atan2(dy, dx);  
+    xPosition = mouseX - (cos(angleB) * 10);
+    yPosition = mouseY - (sin(angleB) * 10);
+    
+    print(letters[i].giveChar());
+    letters[i].drawLetterTwo(xPosition, yPosition, angleB);
+   }
  }
  
- 
+
  void updateWord(){
    // anything changing position and rotation
  }

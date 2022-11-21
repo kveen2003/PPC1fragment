@@ -18,8 +18,8 @@ void draw() {
     word.drawWord();
     break;
   case 1:
-    word.drawLetters();
-    //word.dragLetters();
+    //word.drawLetters();
+    word.dragLetters();
   }
   
 }
