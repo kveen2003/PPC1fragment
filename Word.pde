@@ -4,6 +4,9 @@ class Word {
  float xPosition, yPosition;
  float angle;
  Letter [] letters;
+ Letter letter;
+ float[] x = new float[20];
+ float[] y = new float[20];
  
  Word (String word, float xPosition, float yPosition) {
     myWord = word;
@@ -11,6 +14,7 @@ class Word {
     this.yPosition = yPosition;
     angle = random (2 * PI);
     letters = new Letter [myWord.length()];
+  
     
     // split te word in an array of the individual letters
     for(int i = 0; i< letters.length; i++) {
@@ -30,7 +34,24 @@ class Word {
  
  void drawLetters(){
    for(int i = 0; i< letters.length; i++) {
-      letters[i].drawLetter();
+      //letters[i].drawLetter();
+    } 
+ }
+ 
+ void dragLetter(int i, float xin, float yin){
+    float dx = xin - x[i];
+    float dy = yin - y[i];
+    float angle = atan2(dy, dx);  
+    x[i] = xin - cos(angle) * 20;
+    y[i] = yin - sin(angle) * 20;
+    letter.drawLetter(x[i], y[i], angle);
+ 
+ }
+ 
+ void dragLetters(){
+   dragLetter(0, mouseX, mouseY);
+   for(int i = 0; i< letters.length; i++) {
+       dragLetter(i+1,x[i], y[i]);
     } 
  }
  
