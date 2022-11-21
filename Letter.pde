@@ -13,8 +13,12 @@ class Letter {
     letterColor = color( int(random(150,250)), int(random(50)), int(random(150,200)));
  }
  
- char giveChar(){
-  return myLetter; 
+ float getX(){
+  return xPosition; 
+ }
+ 
+ float getY(){
+   return yPosition;
  }
  
  void drawLetter(){
@@ -35,7 +39,11 @@ class Letter {
    textSize(40);
    text(myLetter, 0,0);
    popMatrix();
+   xPosition = x;
+   yPosition = y;
  }
+ 
+ 
  
 
  

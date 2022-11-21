@@ -8,6 +8,7 @@ class Word {
  Letter letter;
  
  
+ 
  Word (String word, float xPosition, float yPosition) {
     myWord = word;
     this.xPosition = xPosition;
@@ -39,14 +40,22 @@ class Word {
  }
  
  void dragLetters(){
-   for (int i = 0; i < letters.length; i++){
-    float dx = mouseX - xPosition;
-    float dy = mouseY - yPosition;
+   float lastX;
+   float lastY;
+   for (int i = letters.length-1; i >= 0 ; i--){
+     if(i == letters.length-1){
+        lastX = mouseX;
+        lastY = mouseY;
+     } else {
+       lastX = letters[i+1].getX();
+       lastY = letters[i+1].getY();
+     }
+    float dx = lastX - letters[i].getX();
+    float dy = lastY - letters[i].getY();
     angleB = atan2(dy, dx);  
-    xPosition = mouseX - (cos(angleB) * 10);
-    yPosition = mouseY - (sin(angleB) * 10);
+    xPosition = lastX - (cos(angleB) * 20);
+    yPosition = lastY - (sin(angleB) * 20);
     
-    print(letters[i].giveChar());
     letters[i].drawLetterTwo(xPosition, yPosition, angleB);
    }
  }
