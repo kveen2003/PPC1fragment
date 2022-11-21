@@ -34,18 +34,12 @@ class Word {
  
  void drawLetters(){
    for(int i = 0; i< letters.length; i++) {
-      //letters[i].drawLetter();
+      letters[i].drawLetter();
     } 
  }
  
- void dragLetter(int i, float xin, float yin){
-    float dx = xin - x[i];
-    float dy = yin - y[i];
-    float angle = atan2(dy, dx);  
-    x[i] = xin - cos(angle) * 20;
-    y[i] = yin - sin(angle) * 20;
-    letter.drawLetter(x[i], y[i], angle);
- 
+ void dragLetter(int i, float x, float y){
+   
  }
  
  void dragLetters(){
