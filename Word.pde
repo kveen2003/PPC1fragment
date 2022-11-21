@@ -42,21 +42,21 @@ class Word {
  void dragLetters(){
    float lastX;
    float lastY;
-   for (int i = letters.length-1; i >= 0 ; i--){
-     if(i == letters.length-1){
+   for (int i = letters.length-1; i >= 0 ; i--){ //iterates through the array of letters starting from the last one
+     if(i == letters.length-1){ //only takes mouse input for first one
         lastX = mouseX;
         lastY = mouseY;
-     } else {
+     } else { //takes the position of the last letter
        lastX = letters[i+1].getX();
        lastY = letters[i+1].getY();
      }
-    float dx = lastX - letters[i].getX();
+    float dx = lastX - letters[i].getX(); //calculates difference between last x and new x
     float dy = lastY - letters[i].getY();
-    angleB = atan2(dy, dx);  
-    xPosition = lastX - (cos(angleB) * 20);
+    angleB = atan2(dy, dx);  //returns the angle
+    xPosition = lastX - (cos(angleB) * 20); 
     yPosition = lastY - (sin(angleB) * 20);
     
-    letters[i].drawLetterTwo(xPosition, yPosition, angleB);
+    letters[i].drawLetterTwo(xPosition, yPosition, angleB); //updates letters w new positions
    }
  }
  

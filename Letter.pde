@@ -14,10 +14,12 @@ class Letter {
  }
  
  float getX(){
+   //returns the current x position
   return xPosition; 
  }
  
  float getY(){
+   // returns the current y position
    return yPosition;
  }
  
@@ -32,6 +34,7 @@ class Letter {
  }
  
  void drawLetterTwo(float x, float y, float a){
+   //draws letter based on the input of the method
    pushMatrix();
    translate(x, y);
    rotate(a);
